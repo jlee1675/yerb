@@ -16,7 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,6 +35,5 @@
   },
   "devDependencies": {
     "gh-pages": "^2.1.1"
->>>>>>> 98af88aa06e2a25f280fee88d628dbc93dfeae3e
   }
 }
