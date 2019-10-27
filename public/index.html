@@ -28,6 +28,7 @@
         <div id="oauth">
         </div>
         <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
+        <button class="btn btn-default" id="samesongs">Same Songs</button>
       </div>
     </div>
 
@@ -56,6 +57,7 @@
       <dl class="dl-horizontal">
         <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
         <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}</dd>
+        <dt>Same songs</dt><dd id="samesongsdisplay">{{stringarray}}</dd>
       </dl>
     </script>
 
@@ -68,6 +70,7 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="samesongs.js"></script>
     <script>
       (function() {
 
@@ -98,9 +101,6 @@
         var access_token = params.access_token,
             refresh_token = params.refresh_token,
             error = params.error;
-
-        // var songs = document.getElementById('songs-template').innerHTML,
-        //     songsTemplate = Handlebars.compile()
 
         if (error) {
           alert('There was an error during the authentication');
@@ -145,8 +145,12 @@
             });
           }, false);
         }
+
+
+          document.getElementById("samesongs").addEventListener("click", function(){
+            document.getElementById("samesongsdisplay").innerHTML = stringarray;});
+
       })();
     </script>
   </body>
 </html>
-
