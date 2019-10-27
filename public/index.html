@@ -59,6 +59,13 @@
       </dl>
     </script>
 
+    <script id="songs-template" type="text/x-handlebars-template">
+      <h2> Songs </h2>
+      <dl class="dl-horizontal">
+        <dt>Song</dt> <dd>{{songs}}</dd>
+      <dl>
+    </script>
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script>
@@ -91,6 +98,9 @@
         var access_token = params.access_token,
             refresh_token = params.refresh_token,
             error = params.error;
+
+        // var songs = document.getElementById('songs-template').innerHTML,
+        //     songsTemplate = Handlebars.compile()
 
         if (error) {
           alert('There was an error during the authentication');
