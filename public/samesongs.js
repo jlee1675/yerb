@@ -1186,6 +1186,6 @@ var formattedInfo = "";
 for(i = 0; i < infoArray.length; i++){
   formattedInfo += "Title: " + infoArray[i][1] + "\nArtist: " + infoArray[i][2] + "\n\n";
 }
-console.log(formattedInfo);
+//console.log(formattedInfo);
 
 //GET https://api.spotify.com/v1/tracks/3OzwuqlBU5IInWGKhIDhTq
