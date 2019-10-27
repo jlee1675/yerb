@@ -3,8 +3,8 @@ function find_dup_songs(arra1, arra2) {
     //output: intersection of the two sets of string ids, representing songs users share
 
     var result = new Set();
-    console.log('1', arra1)
-    console.log('2', arra2)
+    //console.log('1', arra1)
+    //console.log('2', arra2)
 
     var intersect = new Set();
     for(var x of arra1) if(arra2.has(x)) intersect.add(x);
@@ -1149,16 +1149,43 @@ var exData2 = {"items": [
 }
 
 
-
+//create array of same song ids
 var output = find_dup_songs(get_songs(exData1), get_songs(exData2));
-var stringarray = Array.from(output).join(' ');
+var songId = [];
+function addId(value1){
+  songId.push(value1);
+}
+output.forEach(addId); 
 
 
-var http = require("http");
+//create array of indexes within exData1 of the common tracks
+arrayIndex = [];
+songId.forEach(findSongs);
 
-http.createServer(function(request, response) {
-  response.writeHead(200, {"Content-Type": "text/plain"});
-  response.write(Array.from(output).join(' '));
-  response.end();
-}).listen(8888);
+function findSongs(value1){
+  var i;
+  for(i = 0; i < exData1["items"].length; i++){
+    if (exData1["items"][i]["id"] == value1){
+      arrayIndex.push(i);
+    }
+  }
+}
+
+//create array of arrays representing each song in common
+var infoArray = [];
+arrayIndex.forEach(saveInfo);
+//array in form of [id, song title, song artist]
+function saveInfo(value1){
+  var song = exData1["items"][value1];
+  var data = [song["id"], song["name"], song["album"]["artists"][0]["name"]];
+  infoArray.push(data);
+}
+
+//print out song info in formatted ways
+var formattedInfo = "";
+for(i = 0; i < infoArray.length; i++){
+  formattedInfo += "Title: " + infoArray[i][1] + "\nArtist: " + infoArray[i][2] + "\n\n";
+}
+console.log(formattedInfo);
+
 //GET https://api.spotify.com/v1/tracks/3OzwuqlBU5IInWGKhIDhTq
